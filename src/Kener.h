@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -36,4 +38,5 @@ namespace Kener
 };
 
 #include <network/Network.h>
+#include <core/Core.h>
 #include <gui/Gui.h>
