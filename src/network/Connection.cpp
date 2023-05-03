@@ -15,7 +15,7 @@ Connection::Connection(std::string host,unsigned short port)
     hints.ai_socktype=SOCK_STREAM;
     hints.ai_protocol=IPPROTO_TCP;
     std::string sPort=std::to_string(port);
-    if(getaddrinfo(host.c_ctr(),sPort.c_str(),&hints,&result)!=0)
+    if(getaddrinfo(host.c_str(),sPort.c_str(),&hints,&result)!=0)
         throw make_pair("Dns error",host+":"+sPort);
     sock=socket(result->ai_family,result->ai_socktype,result->ai_protocol);
     if(sock==INVALID_SOCKET)
@@ -26,11 +26,11 @@ Connection::Connection(std::string host,unsigned short port)
 
 void Connection::send(void *data,size_t size)
 {
-    if(send(sock,(char*)data,size,0)==SOCKET_ERROR)
+    if(::send(sock,(char*)data,size,0)==SOCKET_ERROR)
         throw "Sending error";
 }
 void Connection::recv(void *data,size_t size)
 {
-    if(recv(sock,(char*)data,size,0)==SOCKET_ERROR)
+    if(::recv(sock,(char*)data,size,0)==SOCKET_ERROR)
         throw "Recving error";
 }

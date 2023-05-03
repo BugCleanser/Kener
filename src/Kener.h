@@ -1,16 +1,15 @@
+#include <winsock2.h>
+#include <Windows.h>
+#include <windowsx.h>
+#include <uxtheme.h>
 #include <iostream>
 #include <assert.h>
 #include <unordered_map>
 #include <functional>
 #include <thread>
-#include <windows.h>
-#include <windowsx.h>
 #include <commctrl.h>
-#include <uxtheme.h>
-#include <winsock2.h>
-#include <Windows.h>
 #include <string>
-#include <pair>
+#include <utility>
 #include <ws2tcpip.h>
 
 #ifdef UNICODE
