@@ -24,6 +24,7 @@
 				// "src/network/c2s/*.cpp",
 				"res.o",
 				"-fdiagnostics-color=always",
+				"-std=c++17",
 				"-lcomctl32",
 				"-luxtheme",
 				"-luser32",

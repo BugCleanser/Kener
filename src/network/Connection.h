@@ -14,7 +14,7 @@ public:
 
     template<class Packet> void send(Packet data)
     {
-        vector<char> s=data.serialize();
+        std::vector<char> s=data.serialize();
         send(s.data(),s.size());
     }
     template<class Packet> Packet recv()
