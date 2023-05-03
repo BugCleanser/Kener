@@ -7,6 +7,11 @@
 #include <windowsx.h>
 #include <commctrl.h>
 #include <uxtheme.h>
+#include <winsock2.h>
+#include <Windows.h>
+#include <string>
+#include <pair>
+#include <ws2tcpip.h>
 
 #ifdef UNICODE
     #define tWinMain wWinMain
@@ -28,9 +33,5 @@ namespace Kener
     extern Kener instance;
 };
 
-#include "WinAPI.h"
-#include "Window.h"
-#include "DefWndProc.h"
-#include "MapWndProc.h"
-#include "GameWndProc.h"
-#include "ClientWndProc.h"
+#include <network/Network.h>
+#include <gui/Gui.h>

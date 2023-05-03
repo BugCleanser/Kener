@@ -1,0 +1,6 @@
+#include "WinAPI.h"
+#include "Window.h"
+#include "DefWndProc.h"
+#include "MapWndProc.h"
+#include "GameWndProc.h"
+#include "ClientWndProc.h"
