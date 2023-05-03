@@ -11,4 +11,14 @@ public:
 
     void send(void *data,size_t size);
     void recv(void *data,size_t size);
+
+    template<class Packet> void send(Packet data)
+    {
+        vector<char> s=data.serialize();
+        send(s.data(),s.size());
+    }
+    template<class Packet> Packet recv()
+    {
+        return Packet::recv(*this);
+    }
 };
