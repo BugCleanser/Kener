@@ -1,0 +1,73 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "windres",
+			"type": "shell",
+            "command": "windres src/Kener.rc -o res.o",
+			"options":
+			{
+				"cwd": "${workspaceFolder}"
+			},
+            "group": "none"
+		},
+		{
+			"type": "cppbuild",
+			"label": "compile",
+			"command": "g++.exe",
+			"args":
+			[
+				"-fdiagnostics-color=always",
+				"res.o",
+				"src/*.cpp",
+				"-lcomctl32",
+				"-luxtheme",
+				"-Wall",
+				"-luser32",
+				"-Ofast",
+				"-mwindows",
+				"-municode",
+				"-static",
+				"-o",
+				"Kener"
+			],
+			"options":
+			{
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher":
+			[
+				"$gcc"
+			],
+			"dependsOn": ["windres"],
+			"group": "none"
+		},
+		{
+			"type": "shell",
+			"label": "build",
+			"command": "mt.exe",
+			"args":
+			[
+				"-manifest",
+				"Kener.manifest",
+				"-outputresource:Kener.exe;#1"
+			],
+			"options":
+			{
+				"cwd": "${workspaceFolder}"
+			},
+			"dependsOn": ["compile"],
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "run",
+			"command": "./Kener",
+			"options":
+			{
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "test"
+		}
+	]
+}
