@@ -9,11 +9,15 @@ public:
     }
     Connection(std::string host,unsigned short port);
 
-    void send(void *data,size_t size);
+    void send(const void *data,size_t size);
     void recv(void *data,size_t size);
 
     template<class Packet> void send(Packet data)
     {
+        std::string id=Packet::getId();
+        unsigned char idSize=(unsigned char)id.size();
+        send(&idSize,sizeof(idSize));
+        send(id.c_str(),id.size());
         std::vector<char> s=data.serialize();
         send(s.data(),s.size());
     }

@@ -24,7 +24,7 @@ Connection::Connection(std::string host,unsigned short port)
         throw make_pair("connecting error",host+":"+sPort);
 }
 
-void Connection::send(void *data,size_t size)
+void Connection::send(const void *data,size_t size)
 {
     if(::send(sock,(char*)data,size,0)==SOCKET_ERROR)
         throw "Sending error";
