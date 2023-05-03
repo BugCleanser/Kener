@@ -1,10 +1,10 @@
-class Listener
+class PacketListener
 {
 protected:
     Connection connection;
     std::unordered_map<std::string,std::function<void()>> processors;
 public:
-    Listener(Connection connection):connection(connection)
+    PacketListener(Connection connection):connection(connection)
     {
     }
     template<class Packet> void reg(std::function<void(Packet)> processor)

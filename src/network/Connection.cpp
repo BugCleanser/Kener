@@ -7,6 +7,10 @@ STATIC(
     WSAStartup(MAKEWORD(2,2),&wsa);
 })
 
+Connection::Connection(SOCKET sock)
+{
+    this->sock=sock;
+}
 Connection::Connection(std::string host,unsigned short port)
 {
     struct addrinfo hints,*result=NULL;
@@ -22,6 +26,11 @@ Connection::Connection(std::string host,unsigned short port)
         throw make_pair("Newing socket error",host+":"+sPort);
     if(connect(sock,result->ai_addr,(int)result->ai_addrlen)==SOCKET_ERROR)
         throw make_pair("connecting error",host+":"+sPort);
+}
+Connection::~Connection()
+{
+    if(sock!=INVALID_SOCKET)
+        closesocket(sock);
 }
 
 void Connection::send(const void *data,size_t size)
