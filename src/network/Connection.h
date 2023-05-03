@@ -16,8 +16,8 @@ public:
         unsigned char idSize=(unsigned char)id.size();
         send(&idSize,sizeof(idSize));
         send(id.c_str(),id.size());
-        std::vector<char> s=data.serialize();
-        send(s.data(),s.size());
+        std::streambuf s=data.serialize();
+        send(s.gptr(),s.in_avail());
     }
     template<class Packet> Packet recv()
     {
