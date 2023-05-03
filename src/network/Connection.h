@@ -24,3 +24,4 @@ public:
         return Packet::recv(*this);
     }
 };
+template<> std::string Connection::recv<std::string>();

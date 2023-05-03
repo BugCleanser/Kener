@@ -11,7 +11,7 @@ public:
     {
         processors[Packet::getId()]=[this,processor]
         {
-            processor(Packet::recv(*this));
+            processor(Packet::recv(connection));
         };
     }
     void join()
