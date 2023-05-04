@@ -14,7 +14,7 @@ public:
         processors[Packet::getId()]=[this,processor]
         {
             Packet packet;
-            connection >> packet;
+            packet.recv(connection);
             processor(packet);
         };
     }

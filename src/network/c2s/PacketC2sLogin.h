@@ -1,6 +1,6 @@
 #include <Kener.h>
 
-class PacketC2sLogin
+class PacketC2sLogin:public Packet
 {
 protected:
     std::string name;
@@ -19,13 +19,11 @@ public:
     {
         return name;
     }
-    static PacketC2sLogin recv(Connection &connection)
+    void recv(Connection &connection) override
     {
-        std::string name;
         connection >> name;
-        return PacketC2sLogin(name);
     }
-    void send(Connection &connection)
+    void send(Connection &connection) override
     {
         connection << name;
     }

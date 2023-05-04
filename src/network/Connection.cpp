@@ -1,6 +1,5 @@
 #include <Kener.h>
 
-
 STATIC(
 {
     WSADATA wsa;

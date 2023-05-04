@@ -1,6 +1,6 @@
 #include <Kener.h>
 
-class PacketC2sAlive
+class PacketC2sAlive:public Packet
 {
 protected:
 public:
@@ -11,11 +11,10 @@ public:
     {
         return "alive";
     }
-    static PacketC2sAlive recv(Connection &connection)
+    void recv(Connection &connection) override
     {
-        return PacketC2sAlive();
     }
-    void send(Connection &connection)
+    void send(Connection &connection) override
     {
     }
 };

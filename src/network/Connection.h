@@ -21,9 +21,4 @@ public:
         data.send(*this);
         return *this;
     }
-    template<class Packet> Connection &operator>>(Packet &packet)
-    {
-        packet=Packet::recv(*this);
-        return *this;
-    }
 };
