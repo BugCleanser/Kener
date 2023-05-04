@@ -3,6 +3,7 @@
 class LobbyWndProc:public DefWndProc<LobbyWndProc>
 {
 protected:
+    HWND startServerButton;
 public:
     static PCTSTR getClassName()
     {
@@ -13,5 +14,6 @@ public:
     }
     void onOpen();
     LRESULT onCreate(WPARAM wParam,LPARAM lParam);
+    LRESULT onSize(WPARAM wParam,LPARAM lParam);
     LRESULT onPaint(WPARAM wParam,LPARAM lParam);
 };

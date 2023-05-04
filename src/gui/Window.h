@@ -1,3 +1,5 @@
+#include <Kener.h>
+
 template<class WndProc> class Window
 {
 protected:
@@ -22,9 +24,13 @@ public:
         wc.hCursor=LoadCursor(nullptr,IDC_ARROW);
         wc.lpfnWndProc=[](HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam)->LRESULT CALLBACK
         {
+            Window<WndProc> *thiz=(Window<WndProc>*)GetWindowLongPtr(hWnd,GWLP_USERDATA);
             if(msg==WM_CREATE)
-                SetWindowLongPtr(hWnd,GWLP_USERDATA,(LONG_PTR)((CREATESTRUCT*)lParam)->lpCreateParams);
-            auto thiz=(Window<WndProc>*)GetWindowLongPtr(hWnd,GWLP_USERDATA);
+            {
+                thiz=(Window<WndProc>*)((CREATESTRUCT*)lParam)->lpCreateParams;
+                thiz->hWnd=hWnd;
+                SetWindowLongPtr(hWnd,GWLP_USERDATA,(LONG_PTR)thiz);
+            }
             if(thiz)
             {
                 switch(msg)
@@ -79,6 +85,8 @@ public:
     {
         HWND ans=CreateWindow(WC_BUTTON,text,WS_VISIBLE|WS_CHILD|BS_NOTIFY|BS_PUSHBUTTON|(isDefault?BS_DEFPUSHBUTTON:0)|BS_CENTER|BS_VCENTER,x,y,width,height,hWnd,(HMENU)0,Kener::instance.process,NULL);
         setDefaultFont(ans);
+        ShowWindow(ans,SW_SHOW);
+        UpdateWindow(ans);
         buttonProcessors[ans]=processor;
         return ans;
     }
