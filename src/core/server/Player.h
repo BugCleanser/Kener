@@ -8,13 +8,22 @@ protected:
     {
     }
 public:
+    LoginPacket():LoginPacket("Unknown")
+    {
+    }
     static std::string getId()
     {
         return "login";
     }
     static LoginPacket recv(Connection &connection)
     {
-        return LoginPacket(connection.recv<std::string>());
+        std::string name;
+        connection >> name;
+        return LoginPacket(name);
+    }
+    void send(Connection &connection)
+    {
+        connection << std::string("awa");
     }
 };
 

@@ -7,7 +7,7 @@
 #include <utility>
 #include <functional>
 #include <thread>
-#include <streambuf>
+#include <sstream>
 #include <assert.h>
 
 #include <winsock2.h>

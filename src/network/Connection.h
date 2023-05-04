@@ -10,18 +10,20 @@ public:
     void send(const void *data,size_t size);
     void recv(void *data,size_t size);
 
-    template<class Packet> void send(Packet data)
+    template<class Packet> Connection &operator<<(Packet &&data)
     {
         std::string id=Packet::getId();
         unsigned char idSize=(unsigned char)id.size();
         send(&idSize,sizeof(idSize));
         send(id.c_str(),id.size());
-        std::streambuf s=data.serialize();
-        send(s.gptr(),s.in_avail());
+        data.send(*this);
+        return *this;
     }
-    template<class Packet> Packet recv()
+    template<class Packet> Connection &operator>>(Packet &packet)
     {
-        return Packet::recv(*this);
+        packet=Packet::recv(*this);
+        return *this;
     }
 };
-template<> std::string Connection::recv<std::string>();
+template<> Connection &Connection::operator<<(std::string &&str);
+template<> Connection &Connection::operator>>(std::string &str);

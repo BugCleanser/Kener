@@ -1,3 +1,5 @@
+#include <Kener.h>
+
 class PacketListener
 {
 protected:
@@ -11,7 +13,9 @@ public:
     {
         processors[Packet::getId()]=[this,processor]
         {
-            processor(Packet::recv(connection));
+            Packet packet;
+            connection >> packet;
+            processor(packet);
         };
     }
     void join()
