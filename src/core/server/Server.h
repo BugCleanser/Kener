@@ -2,24 +2,34 @@
 
 #include "Player.h"
 
-class Server {
-   protected:
+class Server
+{
+protected:
     ServerListener listener;
     std::thread thread;
-    std::vector<Connection> connections;
-   public:
-    Server() {}
-    void open(unsigned short port) {
+    std::vector<Player*> players;
+public:
+    Server()
+    {
+    }
+    void listen(unsigned short port)
+    {
         listener.listen(port);
-        thread = std::thread([&] {
-            try { while (true) {
-                connections.push_back(listener.accept());
-            } } catch (...) {
+        thread=std::thread([&]
+        {
+            try
+            {
+                while (true)
+                    players.push_back(new Player(listener.accept()));
+            }
+            catch(...)
+            {
                 return;
             }
         });
     }
-    void close() {
-        
+    void close()
+    {
+        listener.stop();
     }
 };

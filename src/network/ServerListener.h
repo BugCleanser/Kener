@@ -9,4 +9,5 @@ public:
     ~ServerListener();
     void listen(unsigned short port);
     Connection accept();
+    void stop();
 };

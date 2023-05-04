@@ -36,3 +36,7 @@ Connection ServerListener::accept()
         throw "Accepting";
     return Connection(c);
 }
+void ServerListener::stop()
+{
+    closesocket(sock);
+}

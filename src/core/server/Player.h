@@ -15,6 +15,10 @@ public:
     {
         return "login";
     }
+    std::string getName()
+    {
+        return name;
+    }
     static LoginPacket recv(Connection &connection)
     {
         std::string name;
@@ -27,20 +31,22 @@ public:
     }
 };
 
-class Player {
-   private:
+class Player
+{
+protected:
     Connection connection;
     std::thread thread;
     std::string name;
-   public:
-    Player(Connection connection) : connection(connection), name("Unknown+114514") {
-        thread = std::thread([&]() {
+public:
+    Player(Connection connection):connection(connection),name("Unknown")
+    {
+        thread=std::thread([&]
+        {
             PacketListener packetListener(connection);
             packetListener.reg<LoginPacket>([&](LoginPacket a)
             {
-                
+                name=a.getName();
             });
-            // bu guan
         });
     }
 };
