@@ -1,6 +1,7 @@
 class ClientWndProc:public DefWndProc<ClientWndProc>
 {
 protected:
+    Window<LobbyWndProc> lobbyWindow;
     Window<GameWndProc> gameWindow;
     HWND activeWindow;
 public:

@@ -11,4 +11,5 @@ public:
     {
     }
     void onOpen();
+    LRESULT onCreate(WPARAM wParam,LPARAM lParam);
 };

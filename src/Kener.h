@@ -20,8 +20,10 @@
 
 #ifdef UNICODE
     #define tWinMain wWinMain
+    #define tcslen wcslen
 #else
     #define tWinMain WinMain
+    #define tcslen strlen
 #endif
 
 #define STATIC(code) static struct STATIC{STATIC()code}STATIC;

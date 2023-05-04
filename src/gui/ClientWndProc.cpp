@@ -2,7 +2,8 @@
 
 void ClientWndProc::onOpen()
 {
-    activeWindow=gameWindow.open(TEXT("Game"),WS_CHILD,window->hWnd);
+    activeWindow=lobbyWindow.open(TEXT("Lobby"),WS_CHILD,window->hWnd);
+    ShowWindow(gameWindow.open(TEXT("Game"),WS_CHILD,window->hWnd),SW_HIDE);
 }
 LRESULT ClientWndProc::onCreate(WPARAM wParam,LPARAM lParam)
 {
