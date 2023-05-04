@@ -10,7 +10,9 @@ public:
     void send(const void *data,size_t size);
     void recv(void *data,size_t size);
 
-    template<class Packet> Connection &operator<<(Packet &&data)
+    Connection &operator<<(std::string data);
+    Connection &operator>>(std::string &packet);
+    template<class Packet> Connection &operator<<(Packet data)
     {
         std::string id=Packet::getId();
         unsigned char idSize=(unsigned char)id.size();
@@ -25,5 +27,3 @@ public:
         return *this;
     }
 };
-template<> Connection &Connection::operator<<(std::string &&str);
-template<> Connection &Connection::operator>>(std::string &str);

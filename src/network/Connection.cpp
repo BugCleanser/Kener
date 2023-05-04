@@ -43,14 +43,14 @@ void Connection::recv(void *data,size_t size)
     if(::recv(sock,(char*)data,size,0)==SOCKET_ERROR)
         throw "Recving error";
 }
-template<> Connection &Connection::operator<<(std::string &&str)
+Connection &Connection::operator<<(std::string str)
 {
     unsigned int size=(unsigned int)str.size();
     send(&size,sizeof(size));
     send(str.c_str(),size);
     return *this;
 }
-template<> Connection &Connection::operator>>(std::string &str)
+Connection &Connection::operator>>(std::string &str)
 {
     unsigned int size;
     recv(&size,sizeof(size));

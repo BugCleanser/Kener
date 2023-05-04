@@ -77,6 +77,6 @@
     [
         "${workspaceFolder}/src"
     ],
-    "C_Cpp.clang_format_fallbackStyle": " {  \tBasedOnStyle: LLVM,  \tUseTab: Never,  \tIndentWidth: 4,  \tTabWidth: 4,  \tBreakBeforeBraces: Allman,  \tAllowShortBlocksOnASingleLine: false,   \tAllowShortFunctionsOnASingleLine: false,   \tAllowShortIfStatementsOnASingleLine: false,  \tAllowShortLoopsOnASingleLine: false,   \tColumnLimit: 0,  \tAccessModifierOffset: -2,  \tNamespaceIndentation: All,  \tFixNamespaceComments: false,   \tAlwaysBreakTemplateDeclarations: false,   \tSpaceBeforeParens: Never,   \tSpaceBeforeAssignmentOperators: false,   \tSpaceAfterAssignmentOperators: false  }  ",
+    "C_Cpp.clang_format_fallbackStyle": " {  \tBasedOnStyle: LLVM,  \tUseTab: Never,  \tIndentWidth: 4,  \tTabWidth: 4,  \tBreakBeforeBraces: Allman,  \tAllowShortBlocksOnASingleLine: false,   \tAllowShortFunctionsOnASingleLine: false,   \tAllowShortIfStatementsOnASingleLine: false,  \tAllowShortLoopsOnASingleLine: false,   \tColumnLimit: 0,  \tAccessModifierOffset: -4,  \tNamespaceIndentation: All,  \tFixNamespaceComments: false,   \tAlwaysBreakTemplateDeclarations: false,   \tSpaceBeforeParens: Never,   \tSpaceBeforeAssignmentOperators: false,   \tSpaceAfterAssignmentOperators: false  }  ",
     "C_Cpp.clang_format_style": "file"
 }
