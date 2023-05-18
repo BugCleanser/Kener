@@ -10,6 +10,6 @@ int WINAPI tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PTSTR lpCmdLine
     Window<ClientWndProc> window;
     window.open(TEXT("Kener"));
     window.join();
-
+    
     return 0;
 }

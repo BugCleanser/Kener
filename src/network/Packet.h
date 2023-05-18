@@ -1,7 +1,11 @@
+#include <Kener.h>
+
 class Connection;
 class Packet
 {
+protected:
+    int id;
 public:
-    virtual void send(Connection &connection)=0;
-    virtual void recv(Connection &connection)=0;
+    virtual void send(Connection &connection);
+    virtual void recv(Connection &connection);
 };

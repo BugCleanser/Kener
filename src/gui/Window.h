@@ -81,9 +81,9 @@ public:
         UpdateWindow(hWnd);
         return hWnd;
     }
-    HWND createButton(PCTSTR text,int x,int y,int width,int height,bool isDefault,std::function<void(HWND,int,int)> processor)
+    HWND createButton(PCTSTR text,int x,int y,int width,int height,std::function<void(HWND,int,int)> processor)
     {
-        HWND ans=CreateWindow(WC_BUTTON,text,WS_VISIBLE|WS_CHILD|BS_NOTIFY|BS_PUSHBUTTON|(isDefault?BS_DEFPUSHBUTTON:0)|BS_CENTER|BS_VCENTER,x,y,width,height,hWnd,(HMENU)0,Kener::instance.process,NULL);
+        HWND ans=CreateWindow(WC_BUTTON,text,WS_VISIBLE|WS_CHILD|BS_NOTIFY|BS_CENTER|BS_VCENTER,x,y,width,height,hWnd,(HMENU)0,Kener::instance.process,NULL);
         setDefaultFont(ans);
         ShowWindow(ans,SW_SHOW);
         UpdateWindow(ans);

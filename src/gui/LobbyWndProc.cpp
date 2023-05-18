@@ -7,7 +7,7 @@ void LobbyWndProc::onOpen()
 }
 LRESULT LobbyWndProc::onCreate(WPARAM wParam,LPARAM lParam)
 {
-    startServerButton=window->createButton(TEXT("Start Server"),256,256,128,64,false,[&](HWND hWnd,int bn,int extra)
+    startServerButton=window->createButton(TEXT("Start Server"),256,256,128,64,[&](HWND hWnd,int bn,int extra)
     {
 
     });
